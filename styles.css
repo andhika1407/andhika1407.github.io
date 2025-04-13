@@ -1,0 +1,14 @@
+/* styles.css */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to right, #f8fafc, #e0f2fe);
+  }
+  
+  .outfit-card {
+    transition: transform 0.2s;
+  }
+  
+  .outfit-card:hover {
+    transform: scale(1.02);
+  }
+  
