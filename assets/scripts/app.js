@@ -12,7 +12,12 @@ let catalogSlide = new Splide( '#catalog', {
   padding: { left: '1rem', right: '1rem' },
   gap: '2rem',
   pagination: false,
-  focus: 'center'
+  focus: 'center',
+  breakpoints: {
+		640: {
+			perPage: 1,
+		}
+  }
 });
 
 function renderItems() {
@@ -70,7 +75,12 @@ let favouriteSlide = new Splide( '#favorites .splide', {
   padding: { left: '1rem', right: '1rem' },
   gap: '2rem',
   pagination: false,
-  focus: 'center'
+  focus: 'center',
+  breakpoints: {
+		640: {
+			perPage: 1,
+		}
+  }
 });
 
 function renderFavourites() {
