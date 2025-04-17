@@ -1,9 +1,18 @@
 const colorFilter = document.getElementById("colorFilter");
 const styleFilter = document.getElementById("styleFilter");
-const itemsContainer = document.getElementById("itemsContainer");
+// const itemsContainer = document.getElementById("itemsContainer");
+const itemsContainer = document.querySelector("#catalog .splide__list");
 const favoritesContainer = document.getElementById("favoritesContainer");
 
 const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
+
+let catalogSlide = new Splide( '#catalog', {
+  perPage: 3,
+  padding: { left: '1rem', right: '1rem' },
+  gap: '2rem',
+  pagination: false,
+  focus: 'center'
+});
 
 function renderItems() {
   const selectedColor = colorFilter.value;
@@ -18,12 +27,15 @@ function renderItems() {
   itemsContainer.innerHTML = "";
   
   if (!filtered.length) {
-    itemsContainer.innerHTML = "<h2>Maaf, belum ada rekomendasi di sistem kami!</h2>"
+    catalogSlide.destroy();
+    itemsContainer.innerHTML = '<h2 class="tect-center">Maaf, belum ada rekomendasi di sistem kami!</h2>'
+
+    return;
   }
   
   filtered.forEach(item => {
-    const card = document.createElement("div");
-    card.className = "item-card";
+    const card = document.createElement("li");
+    card.classList.add("splide__slide", "item-card");
     card.innerHTML = `
       <img src="${item.img}" alt="${item.name}" />
       <h3>${item.name}</h3>
@@ -32,6 +44,24 @@ function renderItems() {
     `;
     itemsContainer.appendChild(card);
   });
+
+  if (catalogSlide.state.is( Splide.STATES.IDLE )) {
+    catalogSlide.refresh(); // If already mounted, refresh
+  } else {
+    catalogSlide.mount(); // First-time mount
+  }
+
+  // filtered.forEach(item => {
+  //   const card = document.createElement("div");
+  //   card.classList.add("item-card");
+  //   card.innerHTML = `
+  //     <img src="${item.img}" alt="${item.name}" />
+  //     <h3>${item.name}</h3>
+  //     <a href="${item.affiliateLink}" target="_blank"><button>Beli</button></a>
+  //     <button onclick="addToFavorites('${item.id}')">❤ Simpan</button>
+  //   `;
+  //   itemsContainer.appendChild(card);
+  // });
 }
 
 function renderFavorites() {

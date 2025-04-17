@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>WeeGo - Mix & Match Fashion</title>
   <link rel="stylesheet" href="assets/styles/styles.css">
+  <link rel="stylesheet" href="assets/styles/splide-skyblue.min.css">
+  <script src="assets/scripts/splide.min.js"></script>
 </head>
 <body>
   <header>
@@ -32,10 +34,17 @@
     </label>
   </section>
 
-  <section id="catalog">
+  <section class="splide" id="catalog">
+    <div class="splide__track">
+      <ul class="splide__list"></ul>
+    </div>
+  </section>
+  
+  
+  <!-- <section id="catalog">
     <h2>Rekomendasi Pakaian</h2>
     <div id="itemsContainer" class="item-grid"></div>
-  </section>
+  </section> -->
 
   <section id="favorites">
     <h2>Favorit Saya</h2>
