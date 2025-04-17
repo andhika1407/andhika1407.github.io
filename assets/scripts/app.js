@@ -1,8 +1,9 @@
 const colorFilter = document.getElementById("colorFilter");
 const styleFilter = document.getElementById("styleFilter");
-// const itemsContainer = document.getElementById("itemsContainer");
 const itemsContainer = document.querySelector("#catalog .splide__list");
-const favoritesContainer = document.getElementById("favoritesContainer");
+const favoritesContainer = document.querySelector("#favorites .splide__list");
+// const itemsContainer = document.getElementById("itemsContainer");
+// const favoritesContainer = document.getElementById("favoritesContainer");
 
 const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
 
@@ -28,7 +29,7 @@ function renderItems() {
   
   if (!filtered.length) {
     catalogSlide.destroy();
-    itemsContainer.innerHTML = '<h2 class="tect-center">Maaf, belum ada rekomendasi di sistem kami!</h2>'
+    itemsContainer.innerHTML = '<h2>Maaf, belum ada rekomendasi di sistem kami!</h2>'
 
     return;
   }
@@ -64,13 +65,29 @@ function renderItems() {
   // });
 }
 
-function renderFavorites() {
+let favouriteSlide = new Splide( '#favorites .splide', {
+  perPage: 4,
+  padding: { left: '1rem', right: '1rem' },
+  gap: '2rem',
+  pagination: false,
+  focus: 'center'
+});
+
+function renderFavourites() {
   favoritesContainer.innerHTML = "";
+
+  if (!favorites.length) {
+    favouriteSlide.destroy();
+    itemsContainer.innerHTML = '<h2>Daftar Favorit masih kosong</h2>'
+
+    return;
+  }
+
   favorites.forEach(id => {
     const item = allItems.find(i => i.id == id);
     if (item) {
       const card = document.createElement("div");
-      card.className = "item-card";
+      card.classList.add("splide__slide", "item-card");
       card.innerHTML = `
         <img src="${item.img}" alt="${item.name}" />
         <h3>${item.name}</h3>
@@ -81,13 +98,20 @@ function renderFavorites() {
       favoritesContainer.appendChild(card);
     }
   });
+
+  if (favouriteSlide.state.is( Splide.STATES.IDLE )) {
+    favouriteSlide.refresh(); // If already mounted, refresh
+  } else {
+    favouriteSlide.mount(); // First-time mount
+  }
+  console.log(favouriteSlide.state.is( Splide.STATES.IDLE ));
 }
 
 function addToFavorites(id) {
   if (!favorites.includes(id)) {
     favorites.push(id);
     localStorage.setItem("favorites", JSON.stringify(favorites));
-    renderFavorites();
+    renderFavourites();
   }
 }
 
@@ -96,16 +120,16 @@ styleFilter.addEventListener("change", renderItems);
 
 window.addEventListener("load", () => {
   renderItems();
-  renderFavorites();
+  renderFavourites();
 })
 
 const openPreview = (itemId) => {
-    // Ambil detail item dan tampilkan di modal
-    const previewDetails = document.getElementById('previewDetails');
-    previewDetails.innerHTML = `Informasi tentang ${itemId}`; // Sesuaikan dengan data item
-    document.getElementById('previewModal').style.display = 'block';
+  // Ambil detail item dan tampilkan di modal
+  const previewDetails = document.getElementById('previewDetails');
+  previewDetails.innerHTML = `Informasi tentang ${itemId}`; // Sesuaikan dengan data item
+  document.getElementById('previewModal').style.display = 'block';
 };
 
 const closePreview = () => {
-    document.getElementById('previewModal').style.display = 'none';
+  document.getElementById('previewModal').style.display = 'none';
 };
