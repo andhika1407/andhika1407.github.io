@@ -1,7 +1,6 @@
 const allItems = [
-    // Contoh data dummy Atasan
     { 
-        id: 'alaskaki1',
+        id: 1,
         type: 'alas kaki',
         name: 'Sandal Platform Putih',
         img: 'assets/images/Alas_Kaki_1.jpg',

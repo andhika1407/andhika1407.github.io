@@ -7,6 +7,26 @@ const favoritesContainer = document.querySelector("#favorites .splide__list");
 
 const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
 
+function filterItems(color, style){
+  const filtered = allItems.filter(item => {
+    const matchColor = !color || item.color === color;
+    const matchStyle = !style || item.style === style;
+    return matchColor && matchStyle;
+  });
+
+  return filtered;
+}
+
+function filterCombination(color, style) {
+  const filtered = allCombination.filter(item => {
+    const matchColor = !color || item.color === color;
+    const matchStyle = !style || item.style === style;
+    return matchColor && matchStyle;
+  });
+
+  return filtered;
+}
+
 let catalogSlide = new Splide( '#catalog', {
   perPage: 3,
   padding: { left: '1rem', right: '1rem' },
@@ -24,29 +44,24 @@ function renderItems() {
   const selectedColor = colorFilter.value;
   const selectedStyle = styleFilter.value;
 
-  const filtered = allItems.filter(item => {
-    const matchColor = !selectedColor || item.color === selectedColor;
-    const matchStyle = !selectedStyle || item.style === selectedStyle;
-    return matchColor && matchStyle;
-  });
-
+  let filteredCombination = filterCombination(selectedColor, selectedStyle);
   itemsContainer.innerHTML = "";
   
-  if (!filtered.length) {
+  if (!filteredCombination.length) {
     catalogSlide.destroy();
     itemsContainer.innerHTML = '<h2>Maaf, belum ada rekomendasi di sistem kami!</h2>'
 
     return;
   }
   
-  filtered.forEach(item => {
+  filteredCombination.forEach(combination => {
     const card = document.createElement("li");
     card.classList.add("splide__slide", "item-card");
     card.innerHTML = `
-      <img src="${item.img}" alt="${item.name}" />
-      <h3>${item.name}</h3>
-      <a href="${item.affiliateLink}" target="_blank"><button>Beli</button></a>
-      <button onclick="addToFavorites('${item.id}')">❤ Simpan</button>
+      <img src="${combination.img}" alt="${combination.name}" />
+      <h3>${combination.name}</h3>
+      <button onclick="openDetail('${combination.id}')">Lihat Detail</button>
+      <button onclick="addToFavorites('${combination.id}')">❤ Simpan</button>
     `;
     itemsContainer.appendChild(card);
   });
@@ -57,14 +72,14 @@ function renderItems() {
     catalogSlide.mount(); // First-time mount
   }
 
-  // filtered.forEach(item => {
+  // filteredCombination.forEach(item => {
   //   const card = document.createElement("div");
   //   card.classList.add("item-card");
   //   card.innerHTML = `
-  //     <img src="${item.img}" alt="${item.name}" />
-  //     <h3>${item.name}</h3>
-  //     <a href="${item.affiliateLink}" target="_blank"><button>Beli</button></a>
-  //     <button onclick="addToFavorites('${item.id}')">❤ Simpan</button>
+  //     <img src="${combination.img}" alt="${combination.name}" />
+  //     <h3>${combination.name}</h3>
+  //     <a href="${combination.affiliateLink}" target="_blank"><button>Beli</button></a>
+  //     <button onclick="addToFavorites('${combination.id}')">❤ Simpan</button>
   //   `;
   //   itemsContainer.appendChild(card);
   // });
@@ -88,13 +103,14 @@ function renderFavourites() {
 
   if (!favorites.length) {
     favouriteSlide.destroy();
-    itemsContainer.innerHTML = '<h2>Daftar Favorit masih kosong</h2>'
+    favouriteSlide.innerHTML = '<h2>Daftar Favorit masih kosong</h2>'
 
     return;
   }
 
   favorites.forEach(id => {
-    const item = allItems.find(i => i.id == id);
+    let item = allCombination[id];
+
     if (item) {
       const card = document.createElement("div");
       card.classList.add("splide__slide", "item-card");
@@ -103,7 +119,7 @@ function renderFavourites() {
         <h3>${item.name}</h3>
         <a href="${item.affiliateLink}" target="_blank"><button>Beli</button></a>
       `;
-      card.addEventListener('click', () => openPreview(id));
+      card.addEventListener('click', () => openDetail(id));
 
       favoritesContainer.appendChild(card);
     }
@@ -114,7 +130,6 @@ function renderFavourites() {
   } else {
     favouriteSlide.mount(); // First-time mount
   }
-  console.log(favouriteSlide.state.is( Splide.STATES.IDLE ));
 }
 
 function addToFavorites(id) {
@@ -133,13 +148,48 @@ window.addEventListener("load", () => {
   renderFavourites();
 })
 
-const openPreview = (itemId) => {
+let popup = new Splide( '#previewDetails', {
+  perPage: 3,
+  padding: { left: '1rem', right: '1rem' },
+  pagination: false,
+  // focus: 'center',
+  breakpoints: {
+		640: {
+			perPage: 1,
+		}
+  }
+});
+
+function openDetail(combinationID) {
+  let itemsID = allCombination[combinationID].items;
+  let container = document.querySelector("#previewModal .splide__list");
+
+  itemsID.forEach(id => {
+    let item = allItems[id];
+
+    const card = document.createElement("li");
+    card.classList.add("splide__slide", "item-card");
+    card.innerHTML = `
+      <img src="${item.img}" alt="${item.name}" />
+      <h3>${item.name}</h3>
+      <p>Lorem ipsum dolor sit amet</p>
+      <a href="${item.affiliateLink}" target="_blank"><button>Beli</button></a>
+    `;
+    container.appendChild(card);
+  });
+
+
+  document.getElementById('previewModal').style.display = 'block';
+
   // Ambil detail item dan tampilkan di modal
   const previewDetails = document.getElementById('previewDetails');
-  previewDetails.innerHTML = `Informasi tentang ${itemId}`; // Sesuaikan dengan data item
-  document.getElementById('previewModal').style.display = 'block';
+  if (popup.state.is( Splide.STATES.IDLE )) {
+    // popup.refresh(); // If already mounted, refresh
+  } else {
+    popup.mount(); // First-time mount
+  }
 };
 
-const closePreview = () => {
+function closePreview() {
   document.getElementById('previewModal').style.display = 'none';
 };
