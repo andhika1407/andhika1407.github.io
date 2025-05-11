@@ -1,30 +1,68 @@
 const colorFilter = document.getElementById("colorFilter");
 const styleFilter = document.getElementById("styleFilter");
 const itemsContainer = document.querySelector("#catalog .splide__list");
+const clothesContainer = document.querySelector("#clothes-list .splide__list");
 const favoritesContainer = document.querySelector("#favorites .splide__list");
 // const itemsContainer = document.getElementById("itemsContainer");
 // const favoritesContainer = document.getElementById("favoritesContainer");
 
 const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
 
+let clotheSlide = new Splide( '#clothes-list', {
+  perPage: 3,
+  padding: { left: '1rem', right: '1rem' },
+  gap: '2rem',
+  pagination: false,
+  focus: 'center',
+  breakpoints: {
+		640: {
+			perPage: 1,
+		}
+  }
+});
+
 function filterItems(color, style){
   const filtered = allItems.filter(item => {
-    const matchColor = !color || item.color === color;
-    const matchStyle = !style || item.style === style;
+    const matchColor = !color || item.Warna.includes(color);
+    const matchStyle = !style || item.Style.includes(style);
     return matchColor && matchStyle;
   });
 
   return filtered;
 }
 
-function filterCombination(color, style) {
-  const filtered = allCombination.filter(item => {
-    const matchColor = !color || item.color === color;
-    const matchStyle = !style || item.style === style;
-    return matchColor && matchStyle;
+function renderClothes(){
+  const selectedColor = colorFilter.value;
+  const selectedStyle = styleFilter.value;
+
+  let filteredItems = filterItems(selectedColor, selectedStyle);
+  clothesContainer.innerHTML = "";
+
+  console.log(filteredItems);
+  
+  if (!filteredItems.length) {
+    catalogSlide.destroy();
+    clothesContainer.innerHTML = '<h2>Maaf, belum ada pakaian yang pas dengan gaya dan warna tersebut di sistem kami!</h2>'
+
+    return;
+  }
+  
+  filteredItems.forEach(item => {
+    const card = document.createElement("li");
+    card.classList.add("splide__slide", "item-card");
+    // ini dibawah ni ganti nama atributnya (item.name jadi item.nama, etc)
+    card.innerHTML = `
+      <img src="${item.Gambar}" alt="${item.Nama}" />                 
+      <h3>${item.Nama}</h3>
+    `;
+    clothesContainer.appendChild(card);
   });
 
-  return filtered;
+  if (clotheSlide.state.is( Splide.STATES.IDLE )) {
+    clotheSlide.refresh(); // If already mounted, refresh
+  } else {
+    clotheSlide.mount(); // First-time mount
+  }
 }
 
 let catalogSlide = new Splide( '#catalog', {
@@ -40,7 +78,17 @@ let catalogSlide = new Splide( '#catalog', {
   }
 });
 
-function renderItems() {
+function filterCombination(color, style) {
+  const filtered = allCombination.filter(item => {
+    const matchColor = !color || item.color === color; // ini nanti ganti
+    const matchStyle = !style || item.style === style; // ini nanti ganti
+    return matchColor && matchStyle;
+  });
+
+  return filtered;
+}
+
+function renderCombination() {
   const selectedColor = colorFilter.value;
   const selectedStyle = styleFilter.value;
 
@@ -57,8 +105,9 @@ function renderItems() {
   filteredCombination.forEach(combination => {
     const card = document.createElement("li");
     card.classList.add("splide__slide", "item-card");
+    // ini dibawah ni ganti nama atributnya (combination.name jadi combination.nama, etc)
     card.innerHTML = `
-      <img src="${combination.img}" alt="${combination.name}" />
+      <img src="${combination.img}" alt="${combination.name}" />                 
       <h3>${combination.name}</h3>
       <button onclick="openDetail('${combination.id}')">Lihat Detail</button>
       <button onclick="addToFavorites('${combination.id}')">❤ Simpan</button>
@@ -109,11 +158,12 @@ function renderFavourites() {
   }
 
   favorites.forEach(id => {
-    let item = allCombination[id];
-
+    let item = allCombination.find(i => i.id == id);
+    
     if (item) {
-      const card = document.createElement("div");
+      let card = document.createElement("div");
       card.classList.add("splide__slide", "item-card");
+      // ini dibawah ni ganti nama atributnya (combination.name jadi combination.nama, etc)
       card.innerHTML = `
         <img src="${item.img}" alt="${item.name}" />
         <h3>${item.name}</h3>
@@ -140,12 +190,15 @@ function addToFavorites(id) {
   }
 }
 
-colorFilter.addEventListener("change", renderItems);
-styleFilter.addEventListener("change", renderItems);
+colorFilter.addEventListener("change", renderCombination);
+styleFilter.addEventListener("change", renderCombination);
+colorFilter.addEventListener("change", renderClothes);
+styleFilter.addEventListener("change", renderClothes);
 
 window.addEventListener("load", () => {
-  renderItems();
+  renderCombination();
   renderFavourites();
+  renderClothes();
 })
 
 let popup = new Splide( '#previewDetails', {
@@ -161,19 +214,21 @@ let popup = new Splide( '#previewDetails', {
 });
 
 function openDetail(combinationID) {
-  let itemsID = allCombination[combinationID].items;
+  let combinationData = allCombination.find(i => i.id == combinationID);
+  let itemsID = combinationData ? combinationData.items : [];
+  
   let container = document.querySelector("#previewModal .splide__list");
 
   itemsID.forEach(id => {
-    let item = allItems[id];
+    let item = allItems.find(i => i.id == id);
 
     const card = document.createElement("li");
     card.classList.add("splide__slide", "item-card");
     card.innerHTML = `
-      <img src="${item.img}" alt="${item.name}" />
-      <h3>${item.name}</h3>
+      <img src="${item.Gambar}" alt="${item.Nama}" />
+      <h3>${item.Nama}</h3>
       <p>Lorem ipsum dolor sit amet</p>
-      <a href="${item.affiliateLink}" target="_blank"><button>Beli</button></a>
+      <a href="${item.Link}" target="_blank"><button>Beli</button></a>
     `;
     container.appendChild(card);
   });
