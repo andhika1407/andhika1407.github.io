@@ -1,11 +1,7 @@
 const colorFilter = document.getElementById("colorFilter");
 const styleFilter = document.getElementById("styleFilter");
 const itemsContainer = document.querySelector("#catalog .splide__list");
-const favoritesContainer = document.querySelector("#favorites .splide__list");
-// const itemsContainer = document.getElementById("itemsContainer");
-// const favoritesContainer = document.getElementById("favoritesContainer");
-
-const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
+const combinationContainer = document.querySelector("#combination-list");
 
 let catalogSlide = !itemsContainer ? null : new Splide( '#catalog', {
   perPage: 3,
@@ -22,122 +18,91 @@ let catalogSlide = !itemsContainer ? null : new Splide( '#catalog', {
 
 function filterCombination(color, style) {
   const filtered = allCombination.filter(item => {
-    const matchColor = !color || item.color === color; // ini nanti ganti
-    const matchStyle = !style || item.style === style; // ini nanti ganti
+    const matchColor = !color || item.Warna.includes(color);
+    const matchStyle = !style || item.Style.includes(style);
     return matchColor && matchStyle;
   });
 
   return filtered;
 }
 
-function renderCombination() {
+// function renderCombination() {
+//   const selectedColor = colorFilter.value;
+//   const selectedStyle = styleFilter.value;
+
+//   let filteredCombination = filterCombination(selectedColor, selectedStyle);
+//   itemsContainer.innerHTML = "";
+  
+//   if (!filteredCombination.length) {
+//     catalogSlide.destroy();
+//     itemsContainer.innerHTML = '<h2>Maaf, belum ada rekomendasi di sistem kami!</h2>'
+
+//     return;
+//   }
+  
+//   filteredCombination.forEach(combination => {
+//     const card = document.createElement("li");
+//     card.classList.add("splide__slide", "item-card");
+//     // ini dibawah ni ganti nama atributnya (combination.name jadi combination.nama, etc)
+//     card.innerHTML = `
+//       <img src="${combination.img}" alt="${combination.name}" />                 
+//       <h3>${combination.name}</h3>
+//       <button onclick="openDetail('${combination.id}')">Lihat Detail</button>
+//       <button onclick="addToFavorites('${combination.id}')">❤ Simpan</button>
+//     `;
+//     itemsContainer.appendChild(card);
+//   });
+
+//   if (catalogSlide.state.is( Splide.STATES.IDLE )) {
+//     catalogSlide.refresh(); // If already mounted, refresh
+//   } else {
+//     catalogSlide.mount(); // First-time mount
+//   }
+
+//   // filteredCombination.forEach(item => {
+//   //   const card = document.createElement("div");
+//   //   card.classList.add("item-card");
+//   //   card.innerHTML = `
+//   //     <img src="${combination.img}" alt="${combination.name}" />
+//   //     <h3>${combination.name}</h3>
+//   //     <a href="${combination.affiliateLink}" target="_blank"><button>Beli</button></a>
+//   //     <button onclick="addToFavorites('${combination.id}')">❤ Simpan</button>
+//   //   `;
+//   //   itemsContainer.appendChild(card);
+//   // });
+// }
+
+function renderCombination(){
   const selectedColor = colorFilter.value;
   const selectedStyle = styleFilter.value;
 
   let filteredCombination = filterCombination(selectedColor, selectedStyle);
-  itemsContainer.innerHTML = "";
+  combinationContainer.innerHTML = "";
   
   if (!filteredCombination.length) {
-    catalogSlide.destroy();
-    itemsContainer.innerHTML = '<h2>Maaf, belum ada rekomendasi di sistem kami!</h2>'
+    combinationContainer.innerHTML = '<h2 class="text-center">Maaf, belum ada pakaian rekomendasi untuk gaya tersebut di sistem kami!</h2>'
 
     return;
   }
   
-  filteredCombination.forEach(combination => {
-    const card = document.createElement("li");
-    card.classList.add("splide__slide", "item-card");
-    // ini dibawah ni ganti nama atributnya (combination.name jadi combination.nama, etc)
-    card.innerHTML = `
-      <img src="${combination.img}" alt="${combination.name}" />                 
-      <h3>${combination.name}</h3>
-      <button onclick="openDetail('${combination.id}')">Lihat Detail</button>
-      <button onclick="addToFavorites('${combination.id}')">❤ Simpan</button>
+  filteredCombination.forEach(item => {
+    const itemContainer = document.createElement("div");
+    itemContainer.classList.add("text-center");
+    itemContainer.innerHTML = `
+      <img src=${item.img} alt="" class="w-75 aspect-3x4"><br>
+      <b>${item.name}</b>
+      <p>Warna: ${item.color} <br> Style: ${item.style}</p>
+      <a href="combination-detail.html?id=${item.id}" class="blue-btn">Lihat Detail</a>
     `;
-    itemsContainer.appendChild(card);
+    combinationContainer.appendChild(itemContainer);
   });
-
-  if (catalogSlide.state.is( Splide.STATES.IDLE )) {
-    catalogSlide.refresh(); // If already mounted, refresh
-  } else {
-    catalogSlide.mount(); // First-time mount
-  }
-
-  // filteredCombination.forEach(item => {
-  //   const card = document.createElement("div");
-  //   card.classList.add("item-card");
-  //   card.innerHTML = `
-  //     <img src="${combination.img}" alt="${combination.name}" />
-  //     <h3>${combination.name}</h3>
-  //     <a href="${combination.affiliateLink}" target="_blank"><button>Beli</button></a>
-  //     <button onclick="addToFavorites('${combination.id}')">❤ Simpan</button>
-  //   `;
-  //   itemsContainer.appendChild(card);
-  // });
-}
-
-let favouriteSlide = !favoritesContainer ? null : new Splide( '#favorites .splide', {
-  perPage: 4,
-  padding: { left: '1rem', right: '1rem' },
-  gap: '2rem',
-  pagination: false,
-  focus: 'center',
-  breakpoints: {
-		640: {
-			perPage: 1,
-		}
-  }
-});
-
-function renderFavourites() {
-  favoritesContainer.innerHTML = "";
-
-  if (!favorites.length) {
-    favouriteSlide.destroy();
-    favouriteSlide.innerHTML = '<h2>Daftar Favorit masih kosong</h2>'
-
-    return;
-  }
-
-  favorites.forEach(id => {
-    let item = allCombination.find(i => i.id == id);
-    
-    if (item) {
-      let card = document.createElement("div");
-      card.classList.add("splide__slide", "item-card");
-      // ini dibawah ni ganti nama atributnya (combination.name jadi combination.nama, etc)
-      card.innerHTML = `
-        <img src="${item.img}" alt="${item.name}" />
-        <h3>${item.name}</h3>
-        <button onclick=openDetail()>Lihat Detail</button>
-        <a href="${item.affiliateLink}" target="_blank"><button>Beli</button></a>
-      `;
-      card.addEventListener('click', () => openDetail(id));
-
-      favoritesContainer.appendChild(card);
-    }
-  });
-
-  if (favouriteSlide.state.is( Splide.STATES.IDLE )) {
-    favouriteSlide.refresh(); // If already mounted, refresh
-  } else {
-    favouriteSlide.mount(); // First-time mount
-  }
-}
-
-function addToFavorites(id) {
-  if (!favorites.includes(id)) {
-    favorites.push(id);
-    localStorage.setItem("favorites", JSON.stringify(favorites));
-    renderFavourites();
-  }
 }
 
 colorFilter.addEventListener("change", renderCombination);
 styleFilter.addEventListener("change", renderCombination);
 
 window.addEventListener("load", () => {
-  renderCombination()
+  renderCombination();
   renderFavourites();
 })
 

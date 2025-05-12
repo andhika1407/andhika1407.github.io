@@ -64,7 +64,6 @@ function renderClothes(type="", style="", color=""){
   clothesContainer.innerHTML = "";
   
   if (!filteredItems.length) {
-    catalogSlide.destroy();
     clothesContainer.innerHTML = '<h2 class="text-center">Maaf, belum ada pakaian yang pas dengan gaya dan warna tersebut di sistem kami!</h2>'
 
     return;

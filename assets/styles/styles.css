@@ -1,15 +1,22 @@
 @import "nav.css";
 
-@import url('https://fonts.googleapis.com/css2?family=Andika:ital,wght@0,400;0,700;1,400;1,700&family=Sansita:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Andika:ital,wght@0,400;0,700;1,400;1,700&family=Sansita:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&display=swap'); */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Taviraj:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Taviraj", serif;
   margin: 0;
   padding: 0;
   background: #f1f5f9;
   color: #1f2937;
 }
-  
+
+h1, h2, h3, h4, h5, h6, b{
+  font-family: "Poppins", sans-serif;
+}
+
 .logo {
   font-size: 2.5rem;
   font-weight: 700;
@@ -19,6 +26,10 @@ body {
 header p {
   font-size: 1rem;
   color: #64748b;
+}
+
+a{
+  text-decoration: none;
 }
 
 .filters {
@@ -85,18 +96,23 @@ select {
 .item-card a button,
 .item-card button, 
 .blue-btn {
-  margin-top: 0.4rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
   background: #2563eb;
   color: white;
   border: none;
-  padding: 0.4rem 0.8rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
   border-radius: 6px;
   cursor: pointer;
-  font-size: 0.875rem;
   transition: background 0.3s ease;
   text-decoration: none;
 }
-  
+
+.blue-btn a{
+  color: white;
+}
+
 .item-card a button:hover,
 .item-card button:hover,
 .blue-btn:hover {
@@ -112,6 +128,14 @@ section h2 {
   margin-bottom: 1rem;
   color: #1f2937;
   text-align: center;
+}
+
+#clothes-subnav{
+  justify-content: space-around;
+}
+
+#clothes-subnav:hover{
+  cursor: pointer;
 }
 
 .modal {
@@ -175,12 +199,12 @@ section h2 {
   justify-content: space-between;
 }
 
-.justify-around{
-  justify-content: space-around;
+.w-20{
+  width: 20%;
 }
 
-.gap-2{
-  gap: 2rem;
+.w-30{
+  width: 30%;
 }
 
 .w-40{
@@ -204,6 +228,18 @@ section h2 {
   margin-right: auto;
 }
 
+.mb-2{
+  margin-bottom: 2rem;
+}
+
+.mr-2{
+  margin-right: 2rem;
+}
+
+.mr-4{
+  margin-right: 4rem;
+}
+
 .px-2{
   padding-left: 2rem;
   padding-right: 2rem;
@@ -211,6 +247,11 @@ section h2 {
 
 .aspect-3x4{
   aspect-ratio: 3/4;
+}
+
+.sm-icon{
+  width: 3rem;
+  height: 3rem;
 }
 
 
@@ -224,14 +265,33 @@ section h2 {
   nav{
     padding: 0 1rem;
   }
+
   section{
     margin: 2rem 1rem;
   }
+
   .item-grid {
     grid-template-columns: repeat(1, 1fr);
   }
+
+  .sm-w-50{
+    width: 50% !important;
+  }
+
   .sm-w-100{
     width: 100% !important;
     box-sizing: border-box !important;
+  }
+
+  #clothes-subnav{
+    justify-content: normal;
+    gap: 2rem;
+    overflow-x: scroll;
+    padding-bottom: 1rem;
+  }
+
+  .sm-icon{
+    width: 2rem;
+    height: 2rem;
   }
 }
