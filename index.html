@@ -10,12 +10,23 @@
 </head>
 <body>
   <header>
-    <nav>
-      <h1 class="logo">WeeGo</h1>
-      <ul>
-        <li><b><a href="clothes-combination.html">Rekomendasi Gaya</a></b></li>
-        <li><b><a href="index.html">Daftar Pakaian</a></b></li>
-      </ul>
+    <nav class="nav-bar">
+      <div class="container">
+        <h1 class="logo">WeeGo</h1>
+
+        <input type="checkbox" id="drop-down-cbox"/>
+        <label for="drop-down-cbox">
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
+    
+        <ul class="main-nav small-caps">
+          <li><b><a href="clothes-combination.html">Rekomendasi Gaya</a></b></li>
+          <li><b><a href="index.html">Daftar Pakaian</a></b></li>
+        </ul>
+        
+      </div>
     </nav>
   </header>
 
@@ -52,8 +63,20 @@
     </div>
   </section> -->
 
-  <section>
-    <ul class="horizontal-list text-center">
+  <section class="w-75 sm-w-100 mx-auto px-2">
+    <div class="d-flex flex-wrap justify-around gap-2">
+      <b onclick="renderClothes('Alas Kaki')">Alas Kaki</b>
+      <b onclick="renderClothes('Anting')">Anting</b>
+      <b onclick="renderClothes('Atasan')">Atasan</b>
+      <b onclick="renderClothes('Bawahan')">Bawahan</b>
+      <b onclick="renderClothes('Cincin')">Cincin</b>
+      <b onclick="renderClothes('Dress')">Dress</b>
+      <b onclick="renderClothes('Gelang')">Gelang</b>
+      <b onclick="renderClothes('Jam')">Jam</b>
+      <b onclick="renderClothes('Kalung')">Kalung</b>
+      <b onclick="renderClothes('Tas')">Tas</b>
+    </div>
+    <!-- <ul class="horizontal-list text-center">
       <li onclick="renderClothes('Alas Kaki')">Alas Kaki</li>
       <li onclick="renderClothes('Anting')">Anting</li>
       <li onclick="renderClothes('Atasan')">Atasan</li>
@@ -64,7 +87,7 @@
       <li onclick="renderClothes('Jam')">Jam</li>
       <li onclick="renderClothes('Kalung')">Kalung</li>
       <li onclick="renderClothes('Tas')">Tas</li>
-    </ul>
+    </ul> -->
     <hr>
   </section>
 
@@ -117,6 +140,7 @@
   </div>
 
   <script src="assets/scripts/data.js"></script>
+  <script src="assets/scripts/main.js"></script>
   <script src="assets/scripts/combination-data.js"></script>
   <script src="assets/scripts/clothes.js"></script>
 </body>

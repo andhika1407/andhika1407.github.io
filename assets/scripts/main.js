@@ -1,44 +1,6 @@
 const favoritesContainer = document.querySelector("#favorites .splide__list");
 const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
 
-function searchItemByID(){
-  let itemID = new URLSearchParams(window.location.search).get("id"); 
-
-  if (!itemID) {
-    return false;
-  }
-  
-  for (const item of allItems) {
-    if (item.ID == itemID) {
-      return item;
-    }
-  }
-
-  return false; // kalo ga ketemu
-}
-
-function renderItem(){
-  let item = searchItemByID();
-
-  let displayContainer = document.querySelector("#clothes-detail");
-
-  if (!item) {
-    displayContainer.innerHTML = '<h2 class="w-100">Maaf, pakaian tersebut tidak ada di sistem kami!</h2>'
-    return;
-  }
-
-  displayContainer.innerHTML =`
-    <img src=${item.Gambar} alt="" class="w-40 sm-w-100">
-    <div class="w-55 sm-w-100">
-        <h1>${item.Nama}</h1>
-        <p>Warna: ${item.Warna}</p>
-        <p>Style: ${item.Style}</p>
-        <p>Cocok untuk ${item.Acara}</p>
-        <p>Link pembelian: <a href=${item.Link}>${item.Link}</a></p>
-    </div>
-  `;
-}
-
 let favouriteSlide = !favoritesContainer ? null : new Splide( '#favorites .splide', {
   perPage: 4,
   padding: { left: '1rem', right: '1rem' },
@@ -46,12 +8,12 @@ let favouriteSlide = !favoritesContainer ? null : new Splide( '#favorites .splid
   pagination: false,
   focus: 'center',
   breakpoints: {
-		640: {
-			perPage: 1,
-		}
+        640: {
+            perPage: 1,
+        }
   }
 });
-
+  
 function renderFavourites() {
   favoritesContainer.innerHTML = "";
 
@@ -88,7 +50,35 @@ function renderFavourites() {
   }
 }
 
+function addToFavorites(id) {
+  if (!favorites.includes(id)) {
+    favorites.push(id);
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+    renderFavourites();
+  }
+}
+
 window.addEventListener("load", () => {
-  renderItem();   
-  renderFavourites()
+  renderFavourites();
+})
+
+let currWindowAxis = 0;
+let headerHeight = 200;
+let nav = document.querySelector("nav");
+
+window.addEventListener("scroll", () => {
+  let scrollTop = window.scrollY;
+  
+  if (scrollTop < currWindowAxis) {
+    if (scrollTop > headerHeight) {
+      nav.classList.add("fixed");
+    }
+    else{
+      nav.classList.remove("fixed");
+    }
+  }
+  else{
+    nav.classList.remove("fixed");
+  }
+  currWindowAxis = scrollTop;
 })

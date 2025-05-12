@@ -10,12 +10,23 @@
 </head>
 <body>
   <header>
-    <nav>
-      <h1 class="logo">WeeGo</h1>
-      <ul>
-        <li><b><a href="clothes-combination.html">Rekomendasi Gaya</a></b></li>
-        <li><b><a href="index.html">Daftar Pakaian</a></b></li>
-      </ul>
+    <nav class="nav-bar">
+      <div class="container">
+        <h1 class="logo">WeeGo</h1>
+
+        <input type="checkbox" id="drop-down-cbox"/>
+        <label for="drop-down-cbox">
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
+    
+        <ul class="main-nav small-caps">
+          <li><b><a href="clothes-combination.html">Rekomendasi Gaya</a></b></li>
+          <li><b><a href="index.html">Daftar Pakaian</a></b></li>
+        </ul>
+        
+      </div>
     </nav>
   </header>
 
@@ -25,18 +36,33 @@
     <label>Color Palette:
       <select id="colorFilter">
         <option value="">Semua Warna</option>
-        <option value="putih">Putih</option>
-        <option value="hitam">Hitam</option>
-        <option value="nude">Nude</option>
-        <option value="biru">Biru</option>
+        <option value="Burgundy">Burgundy</option>
+        <option value="Hitam">Hitam</option>
+        <option value="Abu-Abu">Abu-Abu</option>
+        <option value="Pink">Pink</option>
+        <option value="Coffee Rosegold">Coffee Rosegold</option>
+        <option value="Putih">Putih</option>
+        <option value="Emas">Emas</option>
+        <option value="Kuning">Kuning</option>
+        <option value="Coklat">Coklat</option>
+        <option value="Biru">Biru</option>
+        <option value="Cream">Cream</option>
+        <option value="Ivory">Ivory</option>
       </select>
     </label>
     <label>Style Fashion:
       <select id="styleFilter">
         <option value="">Semua Style</option>
-        <option value="formal">Formal</option>
-        <option value="kasual">Kasual</option>
-        <option value="streetwear">Streetwear</option>
+        <option value="Elegan">Elegan</option>
+        <option value="Formal">Formal</option>
+        <option value="Beach">Beach</option>
+        <option value="Date">Date</option>
+        <option value="Semi Formal">Semi Formal</option>
+        <option value="Feminin">Feminin</option>
+        <option value="Trendy">Trendy</option>
+        <option value="Bold">Bold</option>
+        <option value="Summer Chic">Summer Chic</option>
+        <option value="Cozy">Cozy</option>
       </select>
     </label>
   </section>

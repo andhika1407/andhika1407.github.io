@@ -10,25 +10,27 @@
 </head>
 <body>
   <header>
-    <nav>
-      <h1 class="logo">WeeGo</h1>
-      <ul>
-        <li><b><a href="clothes-combination.html">Rekomendasi Gaya</a></b></li>
-        <li><b><a href="index.html">Daftar Pakaian</a></b></li>
-      </ul>
-    </nav>
+    <nav class="nav-bar">
+        <div class="container">
+          <h1 class="logo">WeeGo</h1>
+  
+          <input type="checkbox" id="drop-down-cbox"/>
+          <label for="drop-down-cbox">
+            <span></span>
+            <span></span>
+            <span></span>
+          </label>
+      
+          <ul class="main-nav small-caps">
+            <li><b><a href="clothes-combination.html">Rekomendasi Gaya</a></b></li>
+            <li><b><a href="index.html">Daftar Pakaian</a></b></li>
+          </ul>
+          
+        </div>
+      </nav>
   </header>
 
-  <section class="d-flex align-start justify-between" id="clothes-detail">
-    <img src="assets/images/Alas_Kaki_1.jpg" alt="" class="w-40">
-    <div class="w-55">
-        <h1>Alas kaki majapahit</h1>
-        <p>Warna: Putih</p>
-        <p>Style: Elegan</p>
-        <p>Cocok untuk kondangan</p>
-        <p>Link pembelian: <a href="">link</a></p>
-    </div>
-  </section>
+  <section class="d-flex flex-wrap align-start justify-between" id="clothes-detail"></section>
 
   <section id="favorites">
     <h2>Style yang disimpan</h2>
