@@ -5,7 +5,7 @@ const allCombination = [
         img: 'assets/images/Alas_Kaki_1.jpg',
         color: 'putih',
         style: 'formal',
-        items: ['alaskaki1', 'atasan1', 'bawahan1', 'dress1'],
+        items: ['AK01', 'A01', 'B01', 'D01'],
     },
 
     {
@@ -14,6 +14,6 @@ const allCombination = [
         img: 'assets/images/Atasan_2.jpg',
         color: 'hitam',
         style: 'kasual',
-        items: ['atasan1', 'bawahan1', 'dress1', 'sepatu1']
+        items: ['A01', 'B01', 'D01', 'AK01']
     }   
 ]

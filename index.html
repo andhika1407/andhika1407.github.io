@@ -10,11 +10,18 @@
 </head>
 <body>
   <header>
-    <h1>WeeGo</h1>
-    <p>Mix & Match pakaian favoritmu!</p>
+    <nav>
+      <h1 class="logo">WeeGo</h1>
+      <ul>
+        <li><b><a href="clothes-combination.html">Rekomendasi Gaya</a></b></li>
+        <li><b><a href="index.html">Daftar Pakaian</a></b></li>
+      </ul>
+    </nav>
   </header>
 
-  <section class="filters">
+  <h1 class="text-center">Daftar Pakaian</h1>
+
+  <!-- <section class="filters">
     <label>Color Palette:
       <select id="colorFilter">
         <option value="">Semua Warna</option>
@@ -35,7 +42,6 @@
   </section>
 
   <section class="splide" id="clothes-list">
-    <h2>Daftar Pakaian</h2>
     <div class="splide__track">
       <ul class="splide__list">
         <li class="splide__slide"><img src="assets/images/Alas_Kaki_2.jpg" alt=""></li>
@@ -44,13 +50,26 @@
         <li class="splide__slide"><img src="assets/images/Alas_Kaki_2.jpg" alt=""></li>
       </ul>
     </div>
+  </section> -->
+
+  <section>
+    <ul class="horizontal-list text-center">
+      <li onclick="renderClothes('Alas Kaki')">Alas Kaki</li>
+      <li onclick="renderClothes('Anting')">Anting</li>
+      <li onclick="renderClothes('Atasan')">Atasan</li>
+      <li onclick="renderClothes('Bawahan')">Bawahan</li>
+      <li onclick="renderClothes('Cincin')">Cincin</li>
+      <li onclick="renderClothes('Dress')">Dress</li>
+      <li onclick="renderClothes('Gelang')">Gelang</li>
+      <li onclick="renderClothes('Jam')">Jam</li>
+      <li onclick="renderClothes('Kalung')">Kalung</li>
+      <li onclick="renderClothes('Tas')">Tas</li>
+    </ul>
+    <hr>
   </section>
-  
-  <section class="splide" id="catalog">
-    <h2>Kombinasi Rekomendasi kami</h2>
-    <div class="splide__track">
-      <ul class="splide__list"></ul>
-    </div>
+
+  <section id="clothes-filter" class="item-grid">
+    
   </section>
 
   <!-- <section id="catalog">
@@ -67,16 +86,18 @@
     </div>
   </section>
 
+  <section id="clothes-list">
+    <h2>Apalah ini</h2>
+    <div class="splide">
+      <div class="splide__track">
+        <ul class="splide__list"></ul>
+      </div>
+    </div>
+  </section>
+
   <!-- <section class="text-center">
     <a href="customize.html"><button class="blue-btn">Rangkai Gayamu Sendiri</button></a>
   </section> -->
-  
-  <!-- Gambar dan info item -->
-  <!-- <div class="item" onclick="openPreview('item1')">
-    
-    <img src="path/to/item-image.jpg" alt="Item">
-    <h4>Nama Item</h4>
-  </div> -->
 
 <!-- Modal (Popup Preview) -->
   <div id="previewModal" class="modal">
@@ -97,6 +118,6 @@
 
   <script src="assets/scripts/data.js"></script>
   <script src="assets/scripts/combination-data.js"></script>
-  <script src="assets/scripts/app.js"></script>
+  <script src="assets/scripts/clothes.js"></script>
 </body>
 </html>

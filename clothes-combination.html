@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WeeGo - Mix & Match Fashion</title>
+  <link rel="stylesheet" href="assets/styles/styles.css">
+  <link rel="stylesheet" href="assets/styles/splide-skyblue.min.css">
+  <script src="assets/scripts/splide.min.js"></script>
+</head>
+<body>
+  <header>
+    <nav>
+      <h1 class="logo">WeeGo</h1>
+      <ul>
+        <li><b><a href="clothes-combination.html">Rekomendasi Gaya</a></b></li>
+        <li><b><a href="index.html">Daftar Pakaian</a></b></li>
+      </ul>
+    </nav>
+  </header>
+
+  <h1 class="text-center">Daftar Rekomendasi Gaya</h1>
+
+  <section class="filters">
+    <label>Color Palette:
+      <select id="colorFilter">
+        <option value="">Semua Warna</option>
+        <option value="putih">Putih</option>
+        <option value="hitam">Hitam</option>
+        <option value="nude">Nude</option>
+        <option value="biru">Biru</option>
+      </select>
+    </label>
+    <label>Style Fashion:
+      <select id="styleFilter">
+        <option value="">Semua Style</option>
+        <option value="formal">Formal</option>
+        <option value="kasual">Kasual</option>
+        <option value="streetwear">Streetwear</option>
+      </select>
+    </label>
+  </section>
+  
+  <section class="splide" id="catalog">
+    <h2>Kombinasi Rekomendasi kami</h2>
+    <div class="splide__track">
+      <ul class="splide__list"></ul>
+    </div>
+  </section>
+
+  <!-- <section id="catalog">
+    <h2>Rekomendasi Pakaian</h2>
+    <div id="itemsContainer" class="item-grid"></div>
+  </section> -->
+
+  <section id="favorites">
+    <h2>Style yang disimpan</h2>
+    <div class="splide">
+      <div class="splide__track">
+        <ul class="splide__list"></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- <section class="text-center">
+    <a href="customize.html"><button class="blue-btn">Rangkai Gayamu Sendiri</button></a>
+  </section> -->
+  
+  <!-- Gambar dan info item -->
+  <!-- <div class="item" onclick="openPreview('item1')">
+    
+    <img src="path/to/item-image.jpg" alt="Item">
+    <h4>Nama Item</h4>
+  </div> -->
+
+<!-- Modal (Popup Preview) -->
+  <div id="previewModal" class="modal">
+    <div class="modal-content">
+        <p class="close" onclick="closePreview()">&times;</p>
+        <section class="splide" id="previewDetails">
+          <div class="splide__track">
+            <ul class="splide__list">
+              <!-- <li class="splide__slide"><img src="assets/images/Alas_Kaki_2.jpg" alt=""></li>
+              <li class="splide__slide"><img src="assets/images/Alas_Kaki_2.jpg" alt=""></li>
+              <li class="splide__slide"><img src="assets/images/Alas_Kaki_2.jpg" alt=""></li>
+              <li class="splide__slide"><img src="assets/images/Alas_Kaki_2.jpg" alt=""></li> -->
+            </ul>
+          </div>
+        </section>
+    </div>
+  </div>
+
+  <script src="assets/scripts/data.js"></script>
+  <script src="assets/scripts/combination-data.js"></script>
+  <script src="assets/scripts/combination.js"></script>
+</body>
+</html>

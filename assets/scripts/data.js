@@ -14,7 +14,7 @@ const allItems = [
     {
         "ID": "AK02",
         "Kategori": "Alas Kaki",
-        "Gambar": "assets/images/Alas_Kaki_2.jpg",
+        "Gambar": "assets/images/Alas_Kaki_2.png",
         "Nama": "Heels Slingback Cream",
         "Jenis": "Heels",
         "Warna": "Cream / Gading",
