@@ -28,10 +28,26 @@ function renderItem(){
     <img src=${item.Gambar} alt="" class="w-40 sm-w-100">
     <div class="w-55 sm-w-100">
         <h1>${item.Nama}</h1>
-        <p>Warna: ${item.Warna}</p>
-        <p>Style: ${item.Style}</p>
-        <p>Cocok untuk ${item.Acara}</p>
-        <p>Link pembelian: <a href=${item.Link}>${item.Link}</a></p>
+        <div class="d-flex">
+            <div class="mr-4">
+                <p>Jenis</p>
+                <p>Warna</p>
+                <p>Style</p>
+                <p>Acara</p>
+                <p>Musim</p>
+            </div>
+            <div class="w-90">
+                <p>${item.Jenis}</p>
+                <p>${item.Warna}</p>
+                <p>${item.Style}</p>
+                <p>${item.Acara}</p>
+                <p>${item.Musim}</p>
+            </div>
+        </div>
+        <button class="blue-btn"><a href=${item.Link} >Beli sekarang</a></button>
+        <hr>
+        <h3>Deskripsi Produk</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem modi illum error tenetur! Rem alias quae dolor ducimus, eveniet expedita nam tempora accusamus eum. Aperiam quidem sequi delectus molestias quae!</p>
     </div>
   `;
 }
