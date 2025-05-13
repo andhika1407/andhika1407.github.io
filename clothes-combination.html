@@ -14,23 +14,26 @@
       <div class="container">
         <h1 class="logo">WeeGo</h1>
 
-        <input type="checkbox" id="drop-down-cbox"/>
-        <label for="drop-down-cbox">
-          <span></span>
-          <span></span>
-          <span></span>
-        </label>
-    
-        <ul class="main-nav small-caps">
-          <li><b><a href="clothes-combination.html">Rekomendasi Gaya</a></b></li>
-          <li><b><a href="index.html">Daftar Pakaian</a></b></li>
-        </ul>
-        
+        <div class="d-flex">
+          <a href="favorite.html"><img src="assets/images/icon/favorite.png" alt="" class="sm-icon mr-2"></a>
+
+          <input type="checkbox" id="drop-down-cbox"/>
+          <label for="drop-down-cbox">
+            <span></span>
+            <span></span>
+            <span></span>
+          </label>
+
+          <ul class="main-nav small-caps">
+            <li><b><a href="clothes-combination.html">Rekomendasi Gaya</a></b></li>
+            <li><b><a href="index.html">Daftar Pakaian</a></b></li>
+          </ul>
+        </div>
       </div>
     </nav>
   </header>
 
-  <h1 class="text-center">Daftar Rekomendasi Gaya</h1>
+  <h1 class="text-center">Rekomendasi Gaya</h1>
 
   <section class="filters">
     <label>Color Palette:
@@ -53,6 +56,7 @@
     <label>Style Fashion:
       <select id="styleFilter">
         <option value="">Semua Style</option>
+        <option value="Casual">Casual</option>
         <option value="Elegan">Elegan</option>
         <option value="Formal">Formal</option>
         <option value="Beach">Beach</option>
@@ -79,15 +83,6 @@
     <h2>Rekomendasi Pakaian</h2>
     <div id="itemsContainer" class="item-grid"></div>
   </section> -->
-
-  <section id="favorites">
-    <h2>Style yang disimpan</h2>
-    <div class="splide">
-      <div class="splide__track">
-        <ul class="splide__list"></ul>
-      </div>
-    </div>
-  </section>
 
   <!-- <section class="text-center">
     <a href="customize.html"><button class="blue-btn">Rangkai Gayamu Sendiri</button></a>

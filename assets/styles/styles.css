@@ -149,12 +149,14 @@ section h2 {
   background-color: rgba(0,0,0,0.4); /* Latar belakang transparan */
 }
 
-.modal-content {
+#notifModal .modal-content {
   background-color: #fefefe;
-  margin: auto;
-  padding: 20px;
+  margin: 40vh auto;
+  box-sizing: border-box;
+  text-align: center;
+  padding: 2rem;
   border: 1px solid #888;
-  width: 80%;
+  border-radius: 1rem;
 }
 
 .close {
@@ -252,6 +254,10 @@ section h2 {
 .sm-icon{
   width: 3rem;
   height: 3rem;
+}
+.med-icon{
+  width: 6rem;
+  height: 6rem;
 }
 
 

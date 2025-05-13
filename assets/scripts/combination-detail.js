@@ -1,3 +1,25 @@
+function addToFavorites(id) {
+    let favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
+    
+    if (favorites.includes(id)) {
+        let notifContainer = document.querySelector(".modal-content");
+
+        notifContainer.innerHTML = `
+            <img src="assets/images/icon/warning.png" alt="" class="med-icon">
+            <h2>Gaya ini sudah ditambahkan!</h2>
+            <a href="favorite.html" class="blue-btn mr-2">Lihat Favorit</a>
+            <a href="clothes-combination.html" class="blue-btn">Lihat Gaya Lain</a>
+        `;
+    }
+    else{
+        favorites.push(id);
+        localStorage.setItem("favorites", JSON.stringify(favorites));
+    }
+    
+    
+    document.getElementById('notifModal').style.display = 'block';
+}
+
 function searchItemsByID(arrayOfItemID){
     const items = allItems.filter(item => {
         return arrayOfItemID.includes(item.ID);
@@ -34,7 +56,7 @@ function searchItemsByID(arrayOfItemID){
     let thumbnailContainer = document.querySelector("#thumbnail");
     thumbnailContainer.innerHTML = `
         <img src=${data.img} alt="" class="w-100">
-        <button class="blue-btn">Simpan Gaya</button>
+        <button class="blue-btn" onclick="addToFavorites('${id}')">Simpan Gaya</button>
     `;
     
     let items = searchItemsByID(data.items);
@@ -56,7 +78,7 @@ function searchItemsByID(arrayOfItemID){
         `;
     });
   }
-  
+
   window.addEventListener("load", () => {
     renderCombination();   
   })

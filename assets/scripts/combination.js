@@ -18,8 +18,8 @@ let catalogSlide = !itemsContainer ? null : new Splide( '#catalog', {
 
 function filterCombination(color, style) {
   const filtered = allCombination.filter(item => {
-    const matchColor = !color || item.Warna.includes(color);
-    const matchStyle = !style || item.Style.includes(style);
+    const matchColor = !color || item.color.includes(color);
+    const matchStyle = !style || item.style.includes(style);
     return matchColor && matchStyle;
   });
 
@@ -101,11 +101,6 @@ function renderCombination(){
 colorFilter.addEventListener("change", renderCombination);
 styleFilter.addEventListener("change", renderCombination);
 
-window.addEventListener("load", () => {
-  renderCombination();
-  renderFavourites();
-})
-
 let popup = new Splide( '#previewDetails', {
   perPage: 3,
   padding: { left: '1rem', right: '1rem' },
@@ -153,3 +148,7 @@ function openDetail(combinationID) {
 function closePreview() {
   document.getElementById('previewModal').style.display = 'none';
 };
+
+window.addEventListener("load", () => {
+  renderCombination();
+})

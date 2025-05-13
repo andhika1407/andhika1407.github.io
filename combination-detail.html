@@ -11,23 +11,26 @@
 <body>
   <header>
     <nav class="nav-bar">
-        <div class="container">
-          <h1 class="logo">WeeGo</h1>
-  
+      <div class="container">
+        <h1 class="logo">WeeGo</h1>
+
+        <div class="d-flex">
+          <a href="favorite.html"><img src="assets/images/icon/favorite.png" alt="" class="sm-icon mr-2"></a>
+
           <input type="checkbox" id="drop-down-cbox"/>
           <label for="drop-down-cbox">
             <span></span>
             <span></span>
             <span></span>
           </label>
-      
+
           <ul class="main-nav small-caps">
             <li><b><a href="clothes-combination.html">Rekomendasi Gaya</a></b></li>
             <li><b><a href="index.html">Daftar Pakaian</a></b></li>
           </ul>
-          
         </div>
-      </nav>
+      </div>
+    </nav>
   </header>
   
   <section id="combination-detail">
@@ -64,14 +67,14 @@
     </div>
   </section>
 
-  <section id="favorites">
-    <h2>Style yang disimpan</h2>
-    <div class="splide">
-      <div class="splide__track">
-        <ul class="splide__list"></ul>
-      </div>
+  <div id="notifModal" class="modal">
+    <div class="modal-content w-55 sm-w-100">
+        <img src="assets/images/icon/check.png" alt="" class="med-icon">
+        <h2>Berhasil ditambahkan</h2>
+        <a href="favorite.html" class="blue-btn mr-2">Lihat Favorit</a>
+        <a href="clothes-combination.html" class="blue-btn">Lihat Gaya Lain</a>
     </div>
-  </section>
+  </div>
 
   <script src="assets/scripts/data.js"></script>
   <script src="assets/scripts/combination-data.js"></script>

@@ -6,10 +6,13 @@ nav.fixed{
     position: fixed;
 }
 
-/* --- Elements --- */
 nav a{
     text-decoration: none;
     color: black;
+}
+
+nav ul{
+	padding-left: 0;
 }
 
 /* --- Elements --- */

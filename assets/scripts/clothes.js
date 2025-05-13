@@ -3,18 +3,18 @@ const styleFilter = document.getElementById("styleFilter");
 // const clothesContainer = document.querySelector("#clothes-list .splide__list");
 const clothesContainer = document.querySelector("#clothes-filter");
 
-let clotheSlide = new Splide( '#clothes-list', {
-  perPage: 3,
-  padding: { left: '1rem', right: '1rem' },
-  gap: '2rem',
-  pagination: false,
-  focus: 'center',
-  breakpoints: {
-		640: {
-			perPage: 1,
-		}
-  }
-});
+// let clotheSlide = new Splide( '#clothes-list', {
+//   perPage: 3,
+//   padding: { left: '1rem', right: '1rem' },
+//   gap: '2rem',
+//   pagination: false,
+//   focus: 'center',
+//   breakpoints: {
+// 		640: {
+// 			perPage: 1,
+// 		}
+//   }
+// });
 
 function filterItems(type, color, style){
   const filtered = allItems.filter(item => {
