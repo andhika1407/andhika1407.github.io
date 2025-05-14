@@ -89,7 +89,7 @@ function renderCombination(){
     const itemContainer = document.createElement("div");
     itemContainer.classList.add("text-center");
     itemContainer.innerHTML = `
-      <img src=${item.img} alt="" class="w-75 aspect-3x4"><br>
+      <img src=${item.img} alt="" class="w-75 sm-w-100 aspect-3x4"><br>
       <b>${item.name}</b>
       <p>Warna: ${item.color} <br> Style: ${item.style}</p>
       <a href="combination-detail.html?id=${item.id}" class="blue-btn">Lihat Detail</a>

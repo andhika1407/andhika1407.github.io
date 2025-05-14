@@ -73,7 +73,7 @@ function renderClothes(type="", style="", color=""){
     const itemContainer = document.createElement("div");
     itemContainer.classList.add("text-center");
     itemContainer.innerHTML = `
-      <img src=${item.Gambar} alt="" class="w-75 aspect-3x4"><br>
+      <img src=${item.Gambar} alt="" class="w-75 sm-w-100 aspect-3x4"><br>
       <b>${item.Nama}</b>
       <p>Warna: ${item.Warna}</p>
       <a href="clothes-detail.html?id=${item.ID}" class="blue-btn">Lihat Detail</a>

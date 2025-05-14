@@ -49,14 +49,13 @@ function searchItemsByID(arrayOfItemID){
         return;
     }
 
-    let title = document.createElement("h1");
-    title.textContent = data.name;
-    displayContainer.prepend(title);
-
     let thumbnailContainer = document.querySelector("#thumbnail");
     thumbnailContainer.innerHTML = `
+        <div class="d-flex justify-between">
+            <h1>${data.name}</h1>
+            <button class="blue-btn ml-2" onclick="addToFavorites('${id}')">Simpan Gaya</button>
+        </div>
         <img src=${data.img} alt="" class="w-100">
-        <button class="blue-btn" onclick="addToFavorites('${id}')">Simpan Gaya</button>
     `;
     
     let items = searchItemsByID(data.items);
@@ -64,7 +63,7 @@ function searchItemsByID(arrayOfItemID){
 
     items.forEach(item => {
         itemContainer.innerHTML +=`
-            <div class="d-flex gap-2 mb-2">
+            <div class="d-flex mb-2">
                 <img src=${item.Gambar} alt="" class="w-30 sm-w-50 mr-2">
                 <div>
                     <b>${item.Nama}</b>

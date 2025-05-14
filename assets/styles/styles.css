@@ -234,6 +234,10 @@ section h2 {
   margin-bottom: 2rem;
 }
 
+.ml-2{
+  margin-left: 2rem;
+}
+
 .mr-2{
   margin-right: 2rem;
 }
@@ -260,11 +264,24 @@ section h2 {
   height: 6rem;
 }
 
+#thumbnail{
+  position: sticky;
+  top: 0;
+}
+
 
 @media (max-width: 1024px) {
   .item-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  #clothes-subnav{
+    justify-content: normal;
+    gap: 2rem;
+    overflow-x: scroll;
+    padding-bottom: 1rem;
+  }
+
 }
 
 @media (max-width: 600px) {
@@ -299,5 +316,9 @@ section h2 {
   .sm-icon{
     width: 2rem;
     height: 2rem;
+  }
+
+  #thumbnail{
+    position: static;
   }
 }
