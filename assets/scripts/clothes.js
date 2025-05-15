@@ -16,7 +16,7 @@ const clothesContainer = document.querySelector("#clothes-filter");
 //   }
 // });
 
-function filterItems(type, color, style){
+function filterItems(type, style, color){
   const filtered = allItems.filter(item => {
     const matchType = !type || item.Kategori.includes(type);
     const matchColor = !color || item.Warna.includes(color);
@@ -60,12 +60,15 @@ function filterItems(type, color, style){
 // }
 
 function renderClothes(type="", style="", color=""){
-  let filteredItems = filterItems(type, color, style);
+  let filteredItems = filterItems(type, style, color);
   clothesContainer.innerHTML = "";
   
   if (!filteredItems.length) {
-    clothesContainer.innerHTML = '<h2 class="text-center">Maaf, belum ada pakaian yang pas dengan gaya dan warna tersebut di sistem kami!</h2>'
-
+    clothesContainer.innerHTML = `
+      <p></p>
+      <h2 class="text-center">Maaf, belum ada pakaian yang pas dengan gaya dan warna tersebut di sistem kami!</h2>
+      <p></p>
+    `
     return;
   }
   
@@ -76,15 +79,26 @@ function renderClothes(type="", style="", color=""){
       <img src=${item.Gambar} alt=""><br>
       <b>${item.Nama}</b>
       <p>Warna: ${item.Warna}</p>
-      <a href="clothes-detail.html?id=${item.ID}" class="blue-btn">LIHAT DETAIL</a>
+      <a href="clothes-detail.html?id=${item.ID}" class="cream-btn">LIHAT DETAIL</a>
     `;
     clothesContainer.appendChild(itemContainer);
   });
 }
 
-// colorFilter.addEventListener("change", renderClothes);
-// styleFilter.addEventListener("change", renderClothes);
-
 window.addEventListener("load", () => {
-  renderClothes();   
+  renderClothes(); 
+  
+  if (colorFilter) {
+    colorFilter.addEventListener("change", () => {
+      let selectedColor = colorFilter.value;
+      let selectedStyle = styleFilter.value;
+      renderClothes("", selectedStyle, selectedColor);
+    });
+
+    styleFilter.addEventListener("change", () => {
+      let selectedColor = colorFilter.value;
+      let selectedStyle = styleFilter.value;
+      renderClothes("", selectedStyle, selectedColor);
+    });
+  }
 })

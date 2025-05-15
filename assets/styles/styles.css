@@ -15,12 +15,58 @@ body {
 
 h1, h2, h3, h4, h5, h6, b{
   font-family: "Poppins", sans-serif;
+  color: #584537;
 }
 
 .logo {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #2563eb;
+  color: #584537;
+}
+
+header.landing-page{
+  height: 100vh;
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('../images/landing_desktop.png') center / cover no-repeat;
+  color: rgba(255, 255, 255, 0.9);
+  display: flex;
+  flex-direction: column;
+}
+
+.landing-page *{
+  color: white;
+}
+
+.landing-page nav{
+  background-color: transparent;
+}
+
+.landing-page nav a{
+  color: white;
+}
+
+img.card{
+  background-color: #F3C1AC;
+  padding: 2rem;
+  border-radius: 1rem;
+}
+
+.hero-section{
+  flex: 1;
+  display: flex;
+  flex-direction: column;  /* Stacks items vertically */
+  justify-content: center; /* Centers vertically (now main axis) */
+  align-items: center; 
+}
+
+.hero-section h1{
+  font-size: 4em;
+  margin: 0;
+}
+
+.hero-section p{
+  font-size: 3em;
+  margin: 0;
+  color: white;
 }
 
 header p {
@@ -34,7 +80,7 @@ a{
 
 .filters {
   display: flex;
-  gap: 1rem;
+  gap: 2rem;
   flex-wrap: wrap;
   margin-bottom: 2rem;
   justify-content: center;
@@ -43,6 +89,7 @@ a{
 label {
   display: flex;
   flex-direction: column;
+  font-size: 1.25rem;
   font-weight: 600;
   color: #374151;
 }
@@ -52,14 +99,13 @@ select {
   border-radius: 6px;
   border: 1px solid #cbd5e1;
   background: #fff;
-  font-size: 0.95rem;
+  font-size: 1.25rem;
 }
 
 .item-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  padding-bottom: 2rem;
+  gap: 3rem;
 }
 
 .item-card {
@@ -95,11 +141,11 @@ select {
 
 .item-card a button,
 .item-card button, 
-.blue-btn {
+.cream-btn {
   margin-top: 1rem;
   margin-bottom: 1rem;
-  background: #2563eb;
-  color: white;
+  background: #F3C1AC;
+  color: #584537;
   border: none;
   padding: 0.5rem 0.75rem;
   font-size: 1rem;
@@ -109,19 +155,24 @@ select {
   text-decoration: none;
 }
 
-.blue-btn a{
-  color: white;
+.cream-btn a{
+  color: #584537;
 }
 
 .item-card a button:hover,
 .item-card button:hover,
-.blue-btn:hover {
-  background: #1e40af;
+.cream-btn:hover {
+  background: #cb9984;
+}
+
+body{
+  background-color: #F9F6F1;
 }
 
 section{
   margin: 4rem 2rem;
 }
+
 section h2 {
   font-size: 1.25rem;
   font-weight: 600;
@@ -213,6 +264,10 @@ section h2 {
   width: 40%;
 }
 
+.w-50{
+  width: 50%;
+}
+
 .w-55{
   width: 55%;
 }
@@ -228,6 +283,10 @@ section h2 {
 .mx-auto{
   margin-left: auto;
   margin-right: auto;
+}
+
+.mt-4{
+  margin-top: 4rem;
 }
 
 .mb-2{
@@ -285,14 +344,29 @@ section h2 {
 }
 
 @media (max-width: 600px) {
-  nav{
-    padding: 0 1rem;
+  header.landing-page{
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('../images/landing_mobile.png') center / cover no-repeat;
+  }
+
+  .hero-section h1{
+    font-size: 3em;
+  }
+  
+  .hero-section p{
+    font-size: 2em;
   }
 
   section{
     margin: 2rem 1rem;
   }
 
+  img.card{
+    padding: 1rem;
+  }
+
+  .sm-block{
+    display: block;
+  }
   .item-grid {
     grid-template-columns: repeat(1, 1fr);
   }
@@ -317,8 +391,20 @@ section h2 {
     width: 2rem;
     height: 2rem;
   }
+  .med-icon{
+    width: 4rem;
+    height: 4rem;
+  }
 
   #thumbnail{
     position: static;
+  }
+
+  label {
+    font-size: 1rem;
+  }
+  
+  select {
+    font-size: 1rem;
   }
 }

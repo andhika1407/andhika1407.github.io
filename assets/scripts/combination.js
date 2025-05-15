@@ -80,7 +80,11 @@ function renderCombination(){
   combinationContainer.innerHTML = "";
   
   if (!filteredCombination.length) {
-    combinationContainer.innerHTML = '<h2 class="text-center">Maaf, belum ada pakaian rekomendasi untuk gaya tersebut di sistem kami!</h2>'
+    combinationContainer.innerHTML = `
+      <p></p>
+      <h2 class="text-center">Maaf, belum ada pakaian yang pas dengan gaya dan warna tersebut di sistem kami!</h2>
+      <p></p>
+    `
 
     return;
   }
@@ -92,7 +96,7 @@ function renderCombination(){
       <img src=${item.img} alt=""><br>
       <b>${item.name}</b>
       <p>Warna: ${item.color} <br> Style: ${item.style}</p>
-      <a href="combination-detail.html?id=${item.id}" class="blue-btn">LIHAT DETAIL</a>
+      <a href="combination-detail.html?id=${item.id}" class="cream-btn">LIHAT DETAIL</a>
     `;
     combinationContainer.appendChild(itemContainer);
   });

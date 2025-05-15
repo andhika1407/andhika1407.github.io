@@ -7,8 +7,8 @@ function addToFavorites(id) {
         notifContainer.innerHTML = `
             <img src="assets/images/icon/warning.png" alt="" class="med-icon">
             <h2>Gaya ini sudah ditambahkan!</h2>
-            <a href="favorite.html" class="blue-btn mr-2">Lihat Favorit</a>
-            <a href="clothes-combination.html" class="blue-btn">Lihat Gaya Lain</a>
+            <a href="favorite.html" class="cream-btn mr-2">Lihat Favorit</a>
+            <a href="clothes-combination.html" class="cream-btn">Lihat Gaya Lain</a>
         `;
     }
     else{
@@ -53,7 +53,7 @@ function searchItemsByID(arrayOfItemID){
     thumbnailContainer.innerHTML = `
         <div class="d-flex justify-between">
             <h1>${data.name}</h1>
-            <button class="blue-btn ml-2" onclick="addToFavorites('${id}')">Simpan Gaya</button>
+            <button class="cream-btn ml-2" onclick="addToFavorites('${id}')">Simpan Gaya</button>
         </div>
         <img src=${data.img} alt="" class="w-100">
     `;
@@ -70,7 +70,7 @@ function searchItemsByID(arrayOfItemID){
                     <p>Warna: ${item.Warna}</p>
                     <p>Style: ${item.Style}</p>
                     <p>Cocok untuk ${item.Acara}</p>
-                    <button class="blue-btn"><a href="clothes-detail.html?id=${item.ID}" >Lihat Detail</a></button>
+                    <button class="cream-btn"><a href="clothes-detail.html?id=${item.ID}" >Lihat Detail</a></button>
                 </div>
                 <hr>
             </div>

@@ -9,13 +9,13 @@
   <script src="assets/scripts/splide.min.js"></script>
 </head>
 <body>
-  <header>
+  <header class="landing-page">
     <nav class="nav-bar">
       <div class="container">
-        <h1 class="logo">WearGo</h1>
+        <a href="index.html"><h1 class="logo">WearGo</h1></a>
 
         <div class="d-flex">
-          <a href="favorite.html"><img src="assets/images/icon/favorite.png" alt="" class="sm-icon mr-2"></a>
+          <a href="favorite.html"><img src="assets/images/icon/favorite-white.png" alt="" class="sm-icon mr-2"></a>
 
           <input type="checkbox" id="drop-down-cbox"/>
           <label for="drop-down-cbox">
@@ -26,155 +26,30 @@
 
           <ul class="main-nav small-caps">
             <li><b><a href="clothes-combination.html">Rekomendasi Gaya</a></b></li>
-            <li><b><a href="index.html">Daftar Pakaian</a></b></li>
+            <li><b><a href="clothes.html">Daftar Pakaian</a></b></li>
           </ul>
         </div>
       </div>
     </nav>
-  </header>
-
-  <h1 class="text-center">Daftar Pakaian</h1>
-
-  <!-- <section class="filters">
-    <label>Color Palette:
-      <select id="colorFilter">
-        <option value="">Semua Warna</option>
-        <option value="putih">Putih</option>
-        <option value="hitam">Hitam</option>
-        <option value="nude">Nude</option>
-        <option value="biru">Biru</option>
-      </select>
-    </label>
-    <label>Style Fashion:
-      <select id="styleFilter">
-        <option value="">Semua Style</option>
-        <option value="formal">Formal</option>
-        <option value="kasual">Kasual</option>
-        <option value="streetwear">Streetwear</option>
-      </select>
-    </label>
-  </section>
-
-  <section class="splide" id="clothes-list">
-    <div class="splide__track">
-      <ul class="splide__list">
-        <li class="splide__slide"><img src="assets/images/Alas_Kaki_2.jpg" alt=""></li>
-        <li class="splide__slide"><img src="assets/images/Alas_Kaki_2.jpg" alt=""></li>
-        <li class="splide__slide"><img src="assets/images/Alas_Kaki_2.jpg" alt=""></li>
-        <li class="splide__slide"><img src="assets/images/Alas_Kaki_2.jpg" alt=""></li>
-      </ul>
-    </div>
-  </section> -->
-
-  <!-- <section class="w-75 sm-w-100 mx-auto px-2 text-center" id="clothes-subnav">
-    <ul>
-      <li><b onclick="renderClothes('Alas Kaki')">Alas Kaki</b></li>
-      <li><b onclick="renderClothes('Anting')">Anting</b></li>
-      <li><b onclick="renderClothes('Atasan')">Atasan</b></li>
-      <li><b onclick="renderClothes('Bawahan')">Bawahan</b></li>
-      <li><b onclick="renderClothes('Cincin')">Cincin</b></li>
-      <li><b onclick="renderClothes('Dress')">Dress</b></li>
-      <li><b onclick="renderClothes('Gelang')">Gelang</b></li>
-      <li><b onclick="renderClothes('Jam')">Jam</b></li>
-      <li><b onclick="renderClothes('Kalung')">Kalung</b></li>
-      <li><b onclick="renderClothes('Tas')">Tas</b></li>
-    </ul>
-    <hr>
-  </section> -->
-  <section class="d-flex px-2 text-center" id="clothes-subnav">
-    <div onclick="renderClothes('Alas Kaki')">
-      <img src="assets/images/icon/heels.png" alt="" class="sm-icon"><br>
-      <b>Alas&nbsp;Kaki</b>
-    </div>
-    <div onclick="renderClothes('Anting')">
-      <img src="assets/images/icon/earrings.png" alt="" class="sm-icon"><br>
-      <b>Anting</b>
-    </div>
-    <div onclick="renderClothes('Atasan')">
-      <img src="assets/images/icon/shirt.png" alt="" class="sm-icon"><br>
-      <b>Atasan</b>
-    </div>
-    <div onclick="renderClothes('Bawahan')">
-      <img src="assets/images/icon/shorts.png" alt="" class="sm-icon"><br>
-      <b>Bawahan</b>
-    </div>
-    <div onclick="renderClothes('Cincin')">
-      <img src="assets/images/icon/ring.png" alt="" class="sm-icon"><br>
-      <b>Cincin</b>
-    </div>
-    <div onclick="renderClothes('Dress')">
-      <img src="assets/images/icon/dress.png" alt="" class="sm-icon"><br>
-      <b>Dress</b>
-    </div>
-    <div onclick="renderClothes('Gelang')">
-      <img src="assets/images/icon/bracelet.png" alt="" class="sm-icon"><br>
-      <b>Gelang</b>
-    </div>
-    <div onclick="renderClothes('Jam')">
-      <img src="assets/images/icon/watch.png" alt="" class="sm-icon"><br>
-      <b>Jam</b>
-    </div>
-    <div onclick="renderClothes('Kalung')">
-      <img src="assets/images/icon/necklace.png" alt="" class="sm-icon"><br>
-      <b>Kalung</b>
-    </div>
-    <div onclick="renderClothes('Tas')">
-      <img src="assets/images/icon/bag.png" alt="" class="sm-icon"><br>
-      <b>Tas</b>
-    </div>
-  </section>
-
-  <section id="clothes-filter" class="item-grid">
-    
-  </section>
-
-  <!-- <section id="catalog">
-    <h2>Rekomendasi Pakaian</h2>
-    <div id="itemsContainer" class="item-grid"></div>
-  </section> -->
-
-  <!-- <section id="favorites">
-    <h2>Style yang disimpan</h2>
-    <div class="splide">
-      <div class="splide__track">
-        <ul class="splide__list"></ul>
-      </div>
-    </div>
-  </section>
-
-  <section id="clothes-list">
-    <h2>Apalah ini</h2>
-    <div class="splide">
-      <div class="splide__track">
-        <ul class="splide__list"></ul>
-      </div>
-    </div>
-  </section> -->
-
-  <!-- <section class="text-center">
-    <a href="customize.html"><button class="blue-btn">Rangkai Gayamu Sendiri</button></a>
-  </section> -->
-
-<!-- Modal (Popup Preview) -->
-  <div id="previewModal" class="modal">
-    <div class="modal-content">
-        <p class="close" onclick="closePreview()">&times;</p>
-        <section class="splide" id="previewDetails">
-          <div class="splide__track">
-            <ul class="splide__list">
-              <!-- <li class="splide__slide"><img src="assets/images/Alas_Kaki_2.jpg" alt=""></li>
-              <li class="splide__slide"><img src="assets/images/Alas_Kaki_2.jpg" alt=""></li>
-              <li class="splide__slide"><img src="assets/images/Alas_Kaki_2.jpg" alt=""></li>
-              <li class="splide__slide"><img src="assets/images/Alas_Kaki_2.jpg" alt=""></li> -->
-            </ul>
+    <div class="hero-section text-center">
+      <h1>WearGo</h1>
+      <p>Your Style, Your Way</p>
+      <div class="d-flex sm-block justify-between w-50 mx-auto mt-4">
+        <a href="clothes-combination.html">
+          <div>
+            <img src="assets/images/icon/mixmatch.png" alt="" class="med-icon card">
+            <h3>Mix & Match</h3>
           </div>
-        </section>
+        </a>
+        <a href="clothes.html">
+          <div>
+            <img src="assets/images/icon/clothes-list.png" alt="" class="med-icon card">
+            <h3>Katalog Pakaian</h3>
+          </div>
+        </a>
+      </div>
     </div>
-  </div>
-
-  <script src="assets/scripts/data.js"></script>
+  </header>
   <script src="assets/scripts/main.js"></script>
-  <script src="assets/scripts/combination-data.js"></script>
-  <script src="assets/scripts/clothes.js"></script>
 </body>
 </html>

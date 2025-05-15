@@ -58,7 +58,7 @@ function renderFavourites() {
     if (!favorites.length) {
         favoritesContainer.innerHTML = `
             <h2>Daftar Favorit masih kosong</h2>
-            <a href="clothes-combination.html" class="blue-btn">Jelajahi Rekomendasi Gaya</a>
+            <a href="clothes-combination.html" class="cream-btn">Jelajahi Rekomendasi Gaya</a>
         `;
         return;
     }
@@ -73,7 +73,7 @@ function renderFavourites() {
                 <img src=${item.img} alt="" class="w-75 aspect-3x4"><br>
                 <b>${item.name}</b>
                 <p>Warna: ${item.color} <br> Style: ${item.style}</p>
-                <a href="combination-detail.html?id=${item.id}" class="blue-btn">Lihat Detail</a>
+                <a href="combination-detail.html?id=${item.id}" class="cream-btn">Lihat Detail</a>
             `;
             favoritesContainer.appendChild(itemContainer);
         }

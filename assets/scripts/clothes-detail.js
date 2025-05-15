@@ -44,7 +44,7 @@ function renderItem(){
                 <p>${item.Musim}</p>
             </div>
         </div>
-        <button class="blue-btn w-55 sm-w-100"><a href=${item.Link} >Beli sekarang</a></button>
+        <button class="cream-btn w-55 sm-w-100"><a href=${item.Link} >Beli sekarang</a></button>
         <hr>
         <h3>Deskripsi Produk</h3>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem modi illum error tenetur! Rem alias quae dolor ducimus, eveniet expedita nam tempora accusamus eum. Aperiam quidem sequi delectus molestias quae!</p>
