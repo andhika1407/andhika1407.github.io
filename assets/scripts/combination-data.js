@@ -66,7 +66,7 @@ const allCombination = [
         id: 'CMBI8',
         name: 'Kombinasi Santai Sehari-hari',
         img: 'assets/images/Atasan_4.jpg',
-        color: '',
+        color: 'Putih, Pink',
         style: 'Casual',
         items: ['A04', 'A10', 'B01', 'B05', 'AK01', 'AK04', 'T02', 'T03']
     },
@@ -75,7 +75,7 @@ const allCombination = [
         id: 'CMBI9',
         name: 'Kombinasi Kasual Trendy',
         img: 'assets/images/Atasan_28.jpg',
-        color: '',
+        color: 'Pink, Biru, Hitam',
         style: 'Casual, Trendy',
         items: ['A28', 'A09', 'B04', 'B09', 'AK01', 'T01']
     },
@@ -84,7 +84,7 @@ const allCombination = [
         id: 'CMBI10',
         name: 'Kombinasi Formal Acara Khusus',
         img: 'assets/images/Atasan_1.jpg',
-        color: '',
+        color: 'Putih, Cream, Hitam',
         style: 'Formal, Elegan',
         items: ['A01', 'A07', 'B07', 'B10', 'AK02', 'AK03', 'AT01', 'AT04']
     },
@@ -93,7 +93,7 @@ const allCombination = [
         id: 'CMBI11',
         name: 'Kombinasi Elegan Kantor',
         img: 'assets/images/Atasan_3.jpg',
-        color: '',
+        color: 'Coklat, Putih, Hitam',
         style: 'Elegan',
         items: ['A03', 'A24', 'B03', 'B07', 'AK02', 'J01']
     },
@@ -102,7 +102,7 @@ const allCombination = [
         id: 'CMBI12',
         name: 'Kombinasi Formal Klasik',
         img: 'assets/images/Atasan_1.jpg',
-        color: '',
+        color: 'Putih, Hitam, Cream',
         style: 'Formal',
         items: ['A01', 'A13', 'A16', 'B07', 'B10', 'AK02', 'AT01', 'C01']
     },
@@ -111,7 +111,7 @@ const allCombination = [
         id: 'CMBI13',
         name: 'Kombinasi Santai Pantai',
         img: 'assets/images/Atasan_4.jpg',
-        color: '',
+        color: 'Putih, Kuning',
         style: 'Beach, Casual',
         items: ['A04', 'A25', 'B01', 'B11', 'B12', 'AK01', 'AK04', 'T02']
     },
@@ -120,7 +120,7 @@ const allCombination = [
         id: 'CMBI14',
         name: 'Kombinasi Feminin Menarik',
         img: 'assets/images/Atasan_26.jpg',
-        color: '',
+        color: 'Navy, Pink, Putih',
         style: 'Date, Feminine',
         items: ['A26', 'A29', 'B11', 'B03', 'B10', 'AK02', 'AK03', 'K01', 'G01']
     },
