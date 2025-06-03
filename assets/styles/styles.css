@@ -18,12 +18,6 @@ h1, h2, h3, h4, h5, h6, b{
   color: #584537;
 }
 
-.logo {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: #584537;
-}
-
 header.landing-page{
   height: 100vh;
   background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('../images/landing_desktop.png') center / cover no-repeat;
@@ -318,10 +312,15 @@ section h2 {
   width: 3rem;
   height: 3rem;
 }
+.logo{
+  width: 5rem;
+  height: 5rem;
+}
 .med-icon{
   width: 6rem;
   height: 6rem;
 }
+
 
 #thumbnail{
   position: sticky;
@@ -391,7 +390,7 @@ section h2 {
     width: 2rem;
     height: 2rem;
   }
-  .med-icon{
+  .logo, .med-icon{
     width: 4rem;
     height: 4rem;
   }
