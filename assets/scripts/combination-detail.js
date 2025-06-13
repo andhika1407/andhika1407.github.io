@@ -7,40 +7,29 @@ function addToFavorites(id) {
         notifContainer.innerHTML = `
             <img src="assets/images/icon/warning.png" alt="" class="med-icon">
             <h2>Gaya ini sudah ditambahkan!</h2>
-            <a href="favorite.html" class="cream-btn mr-2">Lihat Favorit</a>
-            <a href="clothes-combination.html" class="cream-btn">Lihat Gaya Lain</a>
+            <a href="favorite.html" class="btn cream-btn mr-2">Lihat Favorit</a>
+            <a href="clothes-combination.html" class="btn cream-btn">Lihat Gaya Lain</a>
         `;
     }
     else{
         favorites.push(id);
         localStorage.setItem("favorites", JSON.stringify(favorites));
     }
-    
-    
-    document.getElementById('notifModal').style.display = 'block';
+
+    showModal();
 }
 
-function searchItemsByID(arrayOfItemID){
-    const items = allItems.filter(item => {
-        return arrayOfItemID.includes(item.ID);
-    });
-  
-    return items;
-  }
-  
-  function getCombination(combinationID){
-    for (const item of allCombination) {
-        if (item.id == combinationID) {
-            return item;
-        }
-    }
-
-    return false;
-  }
-
-  function renderCombination(){
+function renderCombination(){
     let id = new URLSearchParams(window.location.search).get("id");
-    let data = getCombination(id);
+    let data = false;
+
+    if (id.includes("CSTM")) {
+        let customFav = JSON.parse(localStorage.getItem("customCombination") || "[]");
+        data = customFav.find(i => i.id == id);
+    }
+    else{
+        data = getCombination(id);
+    }
     
     let displayContainer = document.querySelector("#combination-detail");
 
@@ -53,7 +42,10 @@ function searchItemsByID(arrayOfItemID){
     thumbnailContainer.innerHTML = `
         <div class="d-flex justify-between">
             <h1>${data.name}</h1>
-            <button class="cream-btn ml-2" onclick="addToFavorites('${id}')">Simpan Gaya</button>
+            <div class="d-flex">
+                <a href="customize.html?id=${id}"><button class="cream-btn">Edit Gaya</button></a>
+                <button class="cream-btn ml-2" onclick="addToFavorites('${id}')">Simpan Gaya</button>
+            </div>
         </div>
         <img src=${data.img} alt="" class="w-100">
     `;

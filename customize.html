@@ -33,42 +33,53 @@
     </nav>
   </header>
 
-  <h1 class="text-center">Daftar Pakaian</h1>
+  <section class="text-center" id="clothes-list">
+    <h1>Kombinasimu</h1>
+    <div class="splide">
+      <div class="splide__track">
+        <ul class="splide__list"></ul>
+      </div>
+    </div>
+    <button class="cream-btn" onclick="saveCombination()">Simpan Kombinasi</button>
+  </section>
 
-  <section class="filters">
-    <label>Color Palette:
-      <select id="colorFilter">
-        <option value="">Semua Warna</option>
-        <option value="Burgundy">Burgundy</option>
-        <option value="Hitam">Hitam</option>
-        <option value="Abu-Abu">Abu-Abu</option>
-        <option value="Pink">Pink</option>
-        <option value="Coffee Rosegold">Coffee Rosegold</option>
-        <option value="Putih">Putih</option>
-        <option value="Emas">Emas</option>
-        <option value="Kuning">Kuning</option>
-        <option value="Coklat">Coklat</option>
-        <option value="Biru">Biru</option>
-        <option value="Cream">Cream</option>
-        <option value="Ivory">Ivory</option>
-      </select>
-    </label>
-    <label>Style Fashion:
-      <select id="styleFilter">
-        <option value="">Semua Style</option>
-        <option value="Casual">Casual</option>
-        <option value="Elegan">Elegan</option>
-        <option value="Formal">Formal</option>
-        <option value="Beach">Beach</option>
-        <option value="Date">Date</option>
-        <option value="Semi Formal">Semi Formal</option>
-        <option value="Feminin">Feminin</option>
-        <option value="Trendy">Trendy</option>
-        <option value="Bold">Bold</option>
-        <option value="Summer Chic">Summer Chic</option>
-        <option value="Cozy">Cozy</option>
-      </select>
-    </label>
+  <section>
+    <h1 class="text-center">Daftar Pakaian</h1>
+    <div class="filters">
+      <label>Color Palette:
+        <select id="colorFilter">
+          <option value="">Semua Warna</option>
+          <option value="Burgundy">Burgundy</option>
+          <option value="Hitam">Hitam</option>
+          <option value="Abu-Abu">Abu-Abu</option>
+          <option value="Pink">Pink</option>
+          <option value="Coffee Rosegold">Coffee Rosegold</option>
+          <option value="Putih">Putih</option>
+          <option value="Emas">Emas</option>
+          <option value="Kuning">Kuning</option>
+          <option value="Coklat">Coklat</option>
+          <option value="Biru">Biru</option>
+          <option value="Cream">Cream</option>
+          <option value="Ivory">Ivory</option>
+        </select>
+      </label>
+      <label>Style Fashion:
+        <select id="styleFilter">
+          <option value="">Semua Style</option>
+          <option value="Casual">Casual</option>
+          <option value="Elegan">Elegan</option>
+          <option value="Formal">Formal</option>
+          <option value="Beach">Beach</option>
+          <option value="Date">Date</option>
+          <option value="Semi Formal">Semi Formal</option>
+          <option value="Feminin">Feminin</option>
+          <option value="Trendy">Trendy</option>
+          <option value="Bold">Bold</option>
+          <option value="Summer Chic">Summer Chic</option>
+          <option value="Cozy">Cozy</option>
+        </select>
+      </label>
+    </div>
   </section>
 
   <!-- <section class="w-75 sm-w-100 mx-auto px-2 text-center" id="clothes-subnav">
@@ -119,25 +130,17 @@
   </section> -->
 
 <!-- Modal (Popup Preview) -->
-  <div id="previewModal" class="modal">
-    <div class="modal-content">
-        <p class="close" onclick="closePreview()">&times;</p>
-        <section class="splide" id="previewDetails">
-          <div class="splide__track">
-            <ul class="splide__list">
-              <!-- <li class="splide__slide"><img src="assets/images/Alas_Kaki_2.jpg" alt=""></li>
-              <li class="splide__slide"><img src="assets/images/Alas_Kaki_2.jpg" alt=""></li>
-              <li class="splide__slide"><img src="assets/images/Alas_Kaki_2.jpg" alt=""></li>
-              <li class="splide__slide"><img src="assets/images/Alas_Kaki_2.jpg" alt=""></li> -->
-            </ul>
-          </div>
-        </section>
+  <div id="notifModal" class="modal">
+    <div class="modal-content w-55 sm-w-100">
+      <img src="assets/images/icon/check.png" alt="" class="med-icon">
+      <h2>Pakaian berhasil ditambahkan</h2>
+      <button class="cream-btn" onclick="hideModal()">OK</button>
     </div>
   </div>
 
   <script src="assets/scripts/data.js"></script>
   <script src="assets/scripts/main.js"></script>
   <script src="assets/scripts/combination-data.js"></script>
-  <script src="assets/scripts/clothes.js"></script>
+  <script src="assets/scripts/customize.js"></script>
 </body>
 </html>

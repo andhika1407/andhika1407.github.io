@@ -51,14 +51,18 @@
 
 function renderFavourites() {
     let favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
+    let customFav = JSON.parse(localStorage.getItem("customCombination") || "[]");
     let favoritesContainer = document.querySelector("#favorite");
 
     favoritesContainer.innerHTML = "";
 
-    if (!favorites.length) {
+    if (!favorites.length && !customFav.length) {
+        favoritesContainer.classList.remove("item-grid");
         favoritesContainer.innerHTML = `
-            <h2>Daftar Favorit masih kosong</h2>
-            <a href="clothes-combination.html" class="cream-btn">Jelajahi Rekomendasi Gaya</a>
+            <div class="text-center">
+                <h2>Daftar Favorit masih kosong</h2>
+                <a href="clothes-combination.html" class="btn cream-btn">Jelajahi Rekomendasi Gaya</a>
+            </div>
         `;
         return;
     }
@@ -73,12 +77,27 @@ function renderFavourites() {
                 <img src=${item.img} alt="" class="w-75 aspect-3x4"><br>
                 <b>${item.name}</b>
                 <p>Warna: ${item.color} <br> Style: ${item.style}</p>
-                <a href="combination-detail.html?id=${item.id}" class="cream-btn">Lihat Detail</a>
+                <a href="combination-detail.html?id=${item.id}" class="btn cream-btn">Lihat Detail</a>
             `;
             favoritesContainer.appendChild(itemContainer);
         }
     });
+
+    customFav.forEach(item => {
+        const itemContainer = document.createElement("div");
+        itemContainer.classList.add("text-center");
+        itemContainer.innerHTML = `
+            <img src=${item.img} alt="" class="w-75 aspect-3x4"><br>
+            <b>${item.name}</b>
+            <p>Warna: ${item.color.join(", ")} <br> Style: ${item.style.join(", ")}</p>
+            <a href="combination-detail.html?id=${item.id}" class="btn cream-btn">Lihat Detail</a>
+        `;
+        favoritesContainer.appendChild(itemContainer);
+
+        console.log(item.color);
+    });
 }
+
 
 window.addEventListener("load", () => {
     renderFavourites();

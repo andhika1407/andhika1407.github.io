@@ -133,13 +133,9 @@ select {
   color: #1e293b;
 }
 
-.item-card a button,
-.item-card button, 
-.cream-btn {
+.btn, button{
   margin-top: 1rem;
   margin-bottom: 1rem;
-  background: #F3C1AC;
-  color: #584537;
   border: none;
   padding: 0.5rem 0.75rem;
   font-size: 1rem;
@@ -149,12 +145,25 @@ select {
   text-decoration: none;
 }
 
+.cream-btn {
+  background: #F3C1AC;
+  color: #584537;
+}
+
 .cream-btn a{
   color: #584537;
 }
 
-.item-card a button:hover,
-.item-card button:hover,
+.green-btn{
+  background: green;
+  color: white;
+}
+
+.red-btn{
+  background: red;
+  color: white;
+}
+
 .cream-btn:hover {
   background: #cb9984;
 }
@@ -244,6 +253,9 @@ section h2 {
 
 .justify-between{
   justify-content: space-between;
+}
+.justify-center{
+  justify-content: center;
 }
 
 .w-20{

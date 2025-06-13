@@ -16,17 +16,6 @@ const clothesContainer = document.querySelector("#clothes-filter");
 //   }
 // });
 
-function filterItems(type, style, color){
-  const filtered = allItems.filter(item => {
-    const matchType = !type || item.Kategori.includes(type);
-    const matchColor = !color || item.Warna.includes(color);
-    const matchStyle = !style || item.Style.includes(style);
-    return matchType && matchColor && matchStyle;
-  });
-
-  return filtered;
-}
-
 // function renderClothes(){
 //   const selectedColor = colorFilter.value;
 //   const selectedStyle = styleFilter.value;
@@ -79,7 +68,7 @@ function renderClothes(type="", style="", color=""){
       <img src=${item.Gambar} alt=""><br>
       <b>${item.Nama}</b>
       <p>Warna: ${item.Warna}</p>
-      <a href="clothes-detail.html?id=${item.ID}" class="cream-btn">LIHAT DETAIL</a>
+      <a href="clothes-detail.html?id=${item.ID}" class="btn cream-btn">LIHAT DETAIL</a>
     `;
     clothesContainer.appendChild(itemContainer);
   });
@@ -87,18 +76,4 @@ function renderClothes(type="", style="", color=""){
 
 window.addEventListener("load", () => {
   renderClothes(); 
-  
-  if (colorFilter) {
-    colorFilter.addEventListener("change", () => {
-      let selectedColor = colorFilter.value;
-      let selectedStyle = styleFilter.value;
-      renderClothes("", selectedStyle, selectedColor);
-    });
-
-    styleFilter.addEventListener("change", () => {
-      let selectedColor = colorFilter.value;
-      let selectedStyle = styleFilter.value;
-      renderClothes("", selectedStyle, selectedColor);
-    });
-  }
 })

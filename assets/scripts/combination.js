@@ -96,7 +96,7 @@ function renderCombination(){
       <img src=${item.img} alt=""><br>
       <b>${item.name}</b>
       <p>Warna: ${item.color} <br> Style: ${item.style}</p>
-      <a href="combination-detail.html?id=${item.id}" class="cream-btn">LIHAT DETAIL</a>
+      <a href="combination-detail.html?id=${item.id}" class="btn cream-btn">LIHAT DETAIL</a>
     `;
     combinationContainer.appendChild(itemContainer);
   });
