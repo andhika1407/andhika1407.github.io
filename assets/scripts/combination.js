@@ -80,16 +80,30 @@ function renderCombination(){
   combinationContainer.innerHTML = "";
   
   if (!filteredCombination.length) {
+    combinationContainer.classList.remove("item-grid");
+
     combinationContainer.innerHTML = `
-      <p></p>
       <h2 class="text-center">Maaf, belum ada pakaian yang pas dengan gaya dan warna tersebut di sistem kami!</h2>
-      <p></p>
     `
 
     return;
   }
   
+  combinationContainer.classList.add("item-grid");
+
   filteredCombination.forEach(item => {
+
+    if (item.color.includes(',')) {
+      let clothes = searchItemsByID(item.items);
+
+      for (let clth of clothes){
+        if (!selectedColor || clth.Warna.includes(selectedColor)) {
+          item.img = clth.Gambar;
+          break;
+        }
+      }
+    }
+
     const itemContainer = document.createElement("div");
     itemContainer.classList.add("text-center", "item-card");
     itemContainer.innerHTML = `

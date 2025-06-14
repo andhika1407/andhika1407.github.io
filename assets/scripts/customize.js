@@ -170,13 +170,15 @@ function renderClothes(type="", style="", color=""){
     clothesContainer.innerHTML = "";
     
     if (!filteredItems.length) {
+      clothesContainer.classList.remove('item-grid');  
+      
       clothesContainer.innerHTML = `
-        <p></p>
         <h2 class="text-center">Maaf, belum ada pakaian yang pas dengan gaya dan warna tersebut di sistem kami!</h2>
-        <p></p>
       `
       return;
     }
+
+    clothesContainer.classList.add('item-grid');
     
     filteredItems.forEach(item => {
       const itemContainer = document.createElement("div");

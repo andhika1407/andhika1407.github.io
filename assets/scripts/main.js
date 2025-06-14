@@ -14,9 +14,9 @@ function filterItems(type, style, color){
 }
 
 function searchItemsByID(arrayOfItemID){
-  const items = allItems.filter(item => {
-      return arrayOfItemID.includes(item.ID);
-  });
+  let items = allItems
+    .filter(item => arrayOfItemID.includes(item.ID))
+    .sort((a, b) => arrayOfItemID.indexOf(a.ID) - arrayOfItemID.indexOf(b.ID));
 
   return items;
 }
